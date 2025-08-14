@@ -4,3 +4,4 @@ debug with stages... otherwise, this is very crude, may have to do it all step b
 
 ##silent premonition##
 ##__NOTHING WORKS ON THE FIRST TRY__##
+Ran into some issues from the word go...therefore, we're changing it to be better off suited for blackarch linux, or maaybe just a minimal arch setup
