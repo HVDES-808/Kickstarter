@@ -25,7 +25,7 @@ echo "Welcome to Kickstarter"
 echo "[INFO] Starting BlackArch and Omarchy installation..."
 
 update_system() {
-   read -rp "About to update all system dependecies and packages. Continue? [y/N]: " confirm
+   read -rp "About to update all system dependencies and packages. Continue? [y/N]: " confirm
         if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
             echo "Aborting."
             exit 1
@@ -44,12 +44,12 @@ install_blackarch(){
         fi
 
     sudo ./strap.sh
-    ## to be implemented, a file checker for /etc/pacman.conf to edit and enable multilib updating accross repositories 
+    ## to be implemented, a file checker for /etc/pacman.conf to edit and enable multilib updating across repositories 
     echo "[*] Enabling multilib repository..."
     PACMAN_CONF="/etc/pacman.conf"
     if ! grep -q "^\[multilib\]" "$PACMAN_CONF"; then
         echo "Enabling [multilib] repository in $PACMAN_CONF"
-        cp "$PACMAN_CONF" "{PACMAN_CONF}.bak"
+        cp "$PACMAN_CONF" "${PACMAN_CONF}.bak"
         sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman.d\/mirrorlist/{
             s/^#//
             }' "$PACMAN_CONF"
@@ -72,7 +72,7 @@ install_omarchy(){
 clean_up(){
     echo "[*] Cleaning up system"
     sudo pacman -Rns $(pacman -Qtdq) --noconfirm || true
-    sudo pacman -Sc --noconfirm
+    sudo pacman -Sc --noconfirm --yes
 }
 
 main(){
